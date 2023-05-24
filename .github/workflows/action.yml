@@ -42,7 +42,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          port: ${{ secrets.PORT }}
           script: |
             cd anya_app_ci
             echo ${{ secrets.PASSWORD }} | sudo -S docker-compose up -d
