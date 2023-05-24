@@ -23,7 +23,6 @@ jobs:
       DB_USER: ${{ secrets.DB_USER }}
       DB_PASSWORD: ${{ secrets.DB_PASSWORD }}
       DB_NAME: ${{ secrets.DB_NAME }}
-      SUDO_PASSWORD: ${{ secrets.PASSWORD }} # Добавлено новое окружение для пароля sudo
     steps:
       - name: Set up Node.js
         uses: actions/setup-node@v2
@@ -51,8 +50,6 @@ jobs:
           host: ${{ secrets.HOST }}
           username: ${{ secrets.USERNAME }}
           password: ${{ secrets.PASSWORD }}
-          env:
-            SUDO_PASSWORD: ${{ secrets.PASSWORD }}
           script: |
             cd anya_app_ci
-            echo "${SUDO_PASSWORD}" | sudo -S docker-compose up -d
+            docker-compose up -d
